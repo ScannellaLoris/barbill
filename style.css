@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Charm&display=swap");
+
+body {
+  background: url(./img/background.png);
+}
+
+h1,
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  color: whitesmoke;
+  text-align: center;
+  font-family: "Charm", cursive;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+li {
+  flex: 1 0 15%;
+  max-width: 250px;
+  min-height: 250px;
+  margin: 10px;
+  padding: 25px 10px 10px;
+  border-radius: 10px;
+  backdrop-filter: blur(2px);
+  background: rgba(0, 0, 0, 0.37);
+  display: grid;
+  grid-template-rows: 30px 1fr 35px;
+  grid-template-columns: 50% 50%;
+  grid-template-areas:
+    "a a"
+    "b b"
+    "c c";
+}
+
+.card-header {
+  display: flexbox;
+  justify-content: center;
+  grid-area: a;
+}
+
+.card-footer {
+  display: flexbox;
+  justify-content: center;
+  grid-area: c;
+}
+
+.table:hover {
+  transform: scale(1.1);
+  transition: 0.2s;
+}
+
+.table:active {
+  transform: scale(0.9);
+}
+
+.menu {
+  height: 500px;
+  background-color: blanchedalmond;
+  width: 250px;
+  color: black;
+  text-align: center;
+}
+
+.nav {
+  margin-top: -600px;
+  margin-left: -250px;
+}
+
+.nav_open {
+  margin-left: 0;
+}
