@@ -57,17 +57,15 @@ const page = {
 
     main.appendChild(liste);
 
-    var btn = document.querySelector(".table");
-    var nav = document.querySelector(".nav");
+    const tables = document.querySelectorAll(".table");
+    const nav = document.querySelector(".menu");
 
-    btn.onclick = function () {
-      nav.classList.toggle("nav_open");
-    };
+    tables.forEach((tableBtn) => {
+      tableBtn.addEventListener("click", () => {
+        nav.classList.toggle("nav_open");
+      });
+    });
   },
-
-  drinksMenu: function () {},
-
-  tablePlan: function () {},
 };
 
 page.lobby();
