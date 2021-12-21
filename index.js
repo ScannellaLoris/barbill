@@ -37,10 +37,16 @@ const page = {
 
     const liste = document.createElement("ul");
 
+    const nav = document.querySelector(".menu");
+
     tablesArray.forEach((table) => {
       const liTable = document.createElement("li");
       liTable.classList = "table";
       liTable.id = `table${table.tableNumber}`;
+
+      liTable.addEventListener("click", () => {
+        nav.classList.toggle("nav_open");
+      });
 
       const header = document.createElement("div");
       header.classList = "card-header";
@@ -56,15 +62,6 @@ const page = {
     });
 
     main.appendChild(liste);
-
-    const tables = document.querySelectorAll(".table");
-    const nav = document.querySelector(".menu");
-
-    tables.forEach((tableBtn) => {
-      tableBtn.addEventListener("click", () => {
-        nav.classList.toggle("nav_open");
-      });
-    });
   },
 };
 
