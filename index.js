@@ -19,7 +19,7 @@ const beersArray = [
   { name: "1664", qty: "33cl", price: 4 },
 ];
 
-const vinesArray = [
+const winesArray = [
   { name: "Rouge", qty: ["Verre", "Bouteille"], price: [6, 26] },
   { name: "Rosé", qty: ["Verre", "Bouteille"], price: [5, 20] },
   { name: "Blanc", qty: ["Verre", "Bouteille"], price: [6, 23] },
@@ -59,6 +59,33 @@ const page = {
       liste.appendChild(liTable);
       liTable.appendChild(header);
       liTable.appendChild(footer);
+    });
+
+    beersArray.forEach((beer) => {
+      const liBeer = document.createElement("ul");
+      liBeer.classList = "beer";
+      liBeer.id = `${beer.name}`;
+      liBeer.innerText = `${beer.name}`;
+
+      beers.appendChild(liBeer);
+    });
+
+    winesArray.forEach((wine) => {
+      const liWine = document.createElement("ul");
+      liWine.classList = "wine";
+      liWine.id = `${wine.name}`;
+      liWine.innerText = `${wine.name}`;
+
+      wines.appendChild(liWine);
+    });
+
+    cocktailsArray.forEach((cocktail) => {
+      const liCocktails = document.createElement("ul");
+      liCocktails.classList = "wine";
+      liCocktails.id = `${cocktail.name}`;
+      liCocktails.innerText = `${cocktail.name}`;
+
+      cocktails.appendChild(liCocktails);
     });
 
     main.appendChild(liste);
