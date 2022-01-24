@@ -14,15 +14,15 @@ let tablesArray = [
 ];
 
 const beersArray = [
-  { name: "Blonde", qty: ["25cl", "50cl"], price: [5, 8] },
-  { name: "Chouffe", qty: ["25cl", "50cl"], price: [6, 10] },
-  { name: "1664", qty: "33cl", price: 4 },
+  { name: "Blonde", price: 5 },
+  { name: "Chouffe", price: 6 },
+  { name: "1664", price: 4 },
 ];
 
 const winesArray = [
-  { name: "Rouge", qty: ["Verre", "Bouteille"], price: [6, 26] },
-  { name: "Rosé", qty: ["Verre", "Bouteille"], price: [5, 20] },
-  { name: "Blanc", qty: ["Verre", "Bouteille"], price: [6, 23] },
+  { name: "Rouge", price: 26 },
+  { name: "Rosé", price: 20 },
+  { name: "Blanc", price: 23 },
 ];
 
 const cocktailsArray = [
@@ -62,28 +62,28 @@ const page = {
     });
 
     beersArray.forEach((beer) => {
-      const liBeer = document.createElement("ul");
+      const liBeer = document.createElement("span");
       liBeer.classList = "beer";
       liBeer.id = `${beer.name}`;
-      liBeer.innerText = `${beer.name}`;
+      liBeer.innerText = `${beer.name}  ${beer.price}€`;
 
       beers.appendChild(liBeer);
     });
 
     winesArray.forEach((wine) => {
-      const liWine = document.createElement("ul");
+      const liWine = document.createElement("span");
       liWine.classList = "wine";
       liWine.id = `${wine.name}`;
-      liWine.innerText = `${wine.name}`;
+      liWine.innerText = `${wine.name}  ${wine.price}€  `;
 
       wines.appendChild(liWine);
     });
 
     cocktailsArray.forEach((cocktail) => {
-      const liCocktails = document.createElement("ul");
+      const liCocktails = document.createElement("span");
       liCocktails.classList = "wine";
       liCocktails.id = `${cocktail.name}`;
-      liCocktails.innerText = `${cocktail.name}`;
+      liCocktails.innerText = `${cocktail.name}  ${cocktail.price}€`;
 
       cocktails.appendChild(liCocktails);
     });
