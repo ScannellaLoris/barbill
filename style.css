@@ -48,13 +48,21 @@ h3 {
 
 span {
   display: flex;
-  margin-left: 10%;
+  margin-left: 30px;
+  border-radius: 10px;
+  height: auto;
+  width: 60%;
 }
 
 .card-header {
   display: flexbox;
   justify-content: center;
   grid-area: a;
+}
+
+.card-order {
+  justify-content: center;
+  grid-area: b;
 }
 
 .card-footer {
@@ -70,6 +78,11 @@ span {
 
 .table:active {
   transform: scale(0.9);
+  box-shadow: 3px 3px 10px whitesmoke;
+}
+
+.table_selected {
+  box-shadow: 0px 0px 20px whitesmoke;
 }
 
 .menu {
@@ -94,6 +107,7 @@ span {
 span:hover {
   transform: scale(1.1);
   transition: 0.3s;
+  background: 20px, rgba(0, 0, 0, 0.24);
 }
 
 span:active {

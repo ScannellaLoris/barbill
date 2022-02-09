@@ -1,16 +1,16 @@
 const main = document.querySelector("main");
 
 let tablesArray = [
-  { tableNumber: 1, order: [], bill: 0 },
-  { tableNumber: 2, order: [], bill: 0 },
-  { tableNumber: 3, order: [], bill: 0 },
-  { tableNumber: 4, order: [], bill: 0 },
-  { tableNumber: 5, order: [], bill: 0 },
-  { tableNumber: 6, order: [], bill: 0 },
-  { tableNumber: 7, order: [], bill: 0 },
-  { tableNumber: 8, order: [], bill: 0 },
-  { tableNumber: 9, order: [], bill: 0 },
-  { tableNumber: 10, order: [], bill: 0 },
+  { tableNumber: 1, order: [], bill: 0, selected: false },
+  { tableNumber: 2, order: [], bill: 0, selected: false },
+  { tableNumber: 3, order: [], bill: 0, selected: false },
+  { tableNumber: 4, order: [], bill: 0, selected: false },
+  { tableNumber: 5, order: [], bill: 0, selected: false },
+  { tableNumber: 6, order: [], bill: 0, selected: false },
+  { tableNumber: 7, order: [], bill: 0, selected: false },
+  { tableNumber: 8, order: [], bill: 0, selected: false },
+  { tableNumber: 9, order: [], bill: 0, selected: false },
+  { tableNumber: 10, order: [], bill: 0, selected: false },
 ];
 
 const beersArray = [
@@ -31,9 +31,26 @@ const cocktailsArray = [
   { name: "Ricard", price: 3 },
 ];
 
+/*handleEventSelectTable = function () {
+  document.getElementsByClassName(table).forEach((table) => {
+    table.addEventListener("click", (e) => {
+      console.log(e);
+    });
+  });
+};*/
+
 const page = {
   lobby: function () {
     document.querySelector("h1").innerHTML = "BarBill";
+
+    handleEventAddDrink = function () {
+      document.querySelectorAll("span").forEach((drink) => {
+        drink.addEventListener("click", (e) => {
+          let drinkSelected = e.target.id;
+          console.log(drinkSelected);
+        });
+      });
+    };
 
     const liste = document.createElement("ul");
 
@@ -48,9 +65,17 @@ const page = {
         nav.classList.toggle("nav_open");
       });
 
+      liTable.addEventListener("click", () => {
+        liTable.classList.toggle("table_selected");
+      });
+
       const header = document.createElement("div");
       header.classList = "card-header";
       header.innerText = `Table n. ${table.tableNumber}`;
+
+      const order = document.createElement("div");
+      order.classList = "card-order";
+      order.innerHTML = `${table.order}`;
 
       const footer = document.createElement("div");
       footer.classList = "card-footer";
@@ -58,6 +83,7 @@ const page = {
 
       liste.appendChild(liTable);
       liTable.appendChild(header);
+      liTable.appendChild(order);
       liTable.appendChild(footer);
     });
 
@@ -65,7 +91,7 @@ const page = {
       const liBeer = document.createElement("span");
       liBeer.classList = "beer";
       liBeer.id = `${beer.name}`;
-      liBeer.innerText = `${beer.name}  ${beer.price}€`;
+      liBeer.innerText = `${beer.name} : ${beer.price}€`;
 
       beers.appendChild(liBeer);
     });
@@ -74,21 +100,23 @@ const page = {
       const liWine = document.createElement("span");
       liWine.classList = "wine";
       liWine.id = `${wine.name}`;
-      liWine.innerText = `${wine.name}  ${wine.price}€  `;
+      liWine.innerText = `${wine.name} : ${wine.price}€  `;
 
       wines.appendChild(liWine);
     });
 
     cocktailsArray.forEach((cocktail) => {
       const liCocktails = document.createElement("span");
-      liCocktails.classList = "wine";
+      liCocktails.classList = "cocktail";
       liCocktails.id = `${cocktail.name}`;
-      liCocktails.innerText = `${cocktail.name}  ${cocktail.price}€`;
+      liCocktails.innerText = `${cocktail.name} : ${cocktail.price}€`;
 
       cocktails.appendChild(liCocktails);
     });
 
     main.appendChild(liste);
+    handleEventAddDrink();
+    // handleEventSelectTable();
   },
 };
 
