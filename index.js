@@ -13,6 +13,8 @@ let tablesArray = [
   { tableNumber: 10, order: [], bill: 0, selected: false },
 ];
 
+let tableSelected = [];
+
 const beersArray = [
   { name: "Blonde", price: 5 },
   { name: "Chouffe", price: 6 },
@@ -31,26 +33,18 @@ const cocktailsArray = [
   { name: "Ricard", price: 3 },
 ];
 
-/*handleEventSelectTable = function () {
-  document.getElementsByClassName(table).forEach((table) => {
-    table.addEventListener("click", (e) => {
-      console.log(e);
+handleEventAddDrink = function () {
+  document.querySelectorAll("span").forEach((drink) => {
+    drink.addEventListener("click", (e) => {
+      let drinkSelected = e.target.id;
+      console.log(drinkSelected);
     });
   });
-};*/
+};
 
 const page = {
   lobby: function () {
     document.querySelector("h1").innerHTML = "BarBill";
-
-    handleEventAddDrink = function () {
-      document.querySelectorAll("span").forEach((drink) => {
-        drink.addEventListener("click", (e) => {
-          let drinkSelected = e.target.id;
-          console.log(drinkSelected);
-        });
-      });
-    };
 
     const liste = document.createElement("ul");
 
@@ -61,25 +55,50 @@ const page = {
       liTable.classList = "table";
       liTable.id = `table${table.tableNumber}`;
 
-      liTable.addEventListener("click", () => {
-        nav.classList.toggle("nav_open");
-      });
+      handleEventSelectTable = function () {
+        liTable.addEventListener("click", (e) => {
+          tableSelected.unshift(e.target.id);
+          if (tableSelected.length > 2) {
+            tableSelected.pop();
+          }
+          liTable.classList.toggle("table_selected");
+          console.log(tableSelected);
+          console.log(e.target.id);
+          console.log(tableSelected[0]);
+        });
+      };
+      handleEventSelectTable();
 
-      liTable.addEventListener("click", () => {
-        liTable.classList.toggle("table_selected");
-      });
+      /*liTable.addEventListener("click", () => {
+        if (table.selected == false) {
+          table.selected = true;
+        } else {
+          table.selected = false;
+        }
+        //console.log(tablesArray);
+        if (table.selected == true) {
+          liTable.classList.add("table_selected");
+          
+        } else {
+          liTable.classList.remove("table_selected");
+          nav.classList.remove("nav_open");
+        }
+      });*/
 
       const header = document.createElement("div");
       header.classList = "card-header";
       header.innerText = `Table n. ${table.tableNumber}`;
+      header.id = `table${table.tableNumber}`;
 
       const order = document.createElement("div");
       order.classList = "card-order";
       order.innerHTML = `${table.order}`;
+      order.id = `table${table.tableNumber}`;
 
       const footer = document.createElement("div");
       footer.classList = "card-footer";
       footer.innerText = `Note Totale = ${table.bill} €`;
+      footer.id = `table${table.tableNumber}`;
 
       liste.appendChild(liTable);
       liTable.appendChild(header);
@@ -116,7 +135,6 @@ const page = {
 
     main.appendChild(liste);
     handleEventAddDrink();
-    // handleEventSelectTable();
   },
 };
 
